@@ -14,6 +14,7 @@
     <% @instructions.each do |instruction| %>
       <tr>
         <td><%= instruction.title %></td>
+        <td><%= instruction.summary%></td>
         <td><%= link_to 'Show', instruction %></td>
         <td><%= link_to 'Edit', edit_instruction_path(instruction) %></td>
         <td><%= link_to 'Destroy', instruction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Instruction', new_instruction_path %>
+<%= link_to 'New instruction', new_instruction_path %>

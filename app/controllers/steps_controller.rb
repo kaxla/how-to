@@ -4,7 +4,7 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step.all
+    @steps = @instruction.step.all
   end
 
   # GET /steps/1
@@ -14,7 +14,8 @@ class StepsController < ApplicationController
 
   # GET /steps/new
   def new
-    @step = Step.new
+    @instruction = Instruction.find(params[:id])
+    @step = @instruction.steps.new
   end
 
   # GET /steps/1/edit

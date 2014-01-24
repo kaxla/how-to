@@ -2,8 +2,11 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @instruction.title %>
+  <td><%= @instruction.title %></td>
+  <strong>Summary:</strong>
+  <td><%= @instruction.summary%></td>
 </p>
 
 <%= link_to 'Edit', edit_instruction_path(@instruction) %> |
 <%= link_to 'Back', instructions_path %>
+<%= link_to 'Add Step', new_instruction_step_path(@instruction) %>

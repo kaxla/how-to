@@ -1,0 +1,7 @@
+firststep:
+  step_number: one
+  body: This is how to do the first step
+
+secondstep:
+  step_number: two
+  body: This is how to do the second step

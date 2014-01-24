@@ -1,7 +1,7 @@
 class CreateInstructions < ActiveRecord::Migration
   def change
     create_table :instructions do |t|
-      t.text :title
+      t.text :name
 
       t.timestamps
     end

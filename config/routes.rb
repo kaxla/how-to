@@ -1,7 +1,9 @@
 HowTo::Application.routes.draw do
-  resources :steps
+  get "instructions/index"
 
-  resources :instructions
+  resources :instructions do
+    resources :steps
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
