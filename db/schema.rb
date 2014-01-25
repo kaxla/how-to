@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124000502) do
+ActiveRecord::Schema.define(version: 20140124170204) do
 
   create_table "instructions", force: true do |t|
     t.text     "title"
@@ -25,7 +25,10 @@ ActiveRecord::Schema.define(version: 20140124000502) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "step_number"
+    t.integer  "instruction_id"
   end
+
+  add_index "steps", ["instruction_id"], name: "index_steps_on_instruction_id"
 
   create_table "welcomes", force: true do |t|
     t.datetime "created_at"

@@ -1,5 +1,7 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: [:show, :edit, :update, :destroy]
+  # before_action :set_step, only: [:show, :edit, :update, :destroy]
+    before_action :load_instruction, only: [:show, :create, :edit, :update, :destroy, :new]
+
 
   # GET /steps
   # GET /steps.json
@@ -10,11 +12,14 @@ class StepsController < ApplicationController
   # GET /steps/1
   # GET /steps/1.json
   def show
+    @step = @instruction.steps.find(params[:id])
   end
 
   # GET /steps/new
   def new
-    @instruction = Instruction.find(params[:id])
+    # @instruction = Instruction.find(params[:instruction_id])
+    # @step = Step.find(params[:step_id])
+    # @step = Step.new
     @step = @instruction.steps.new
   end
 
@@ -25,11 +30,13 @@ class StepsController < ApplicationController
   # POST /steps
   # POST /steps.json
   def create
-    @step = Step.new(step_params)
+    # instruction = Instruction.find(params[:instruction_id])
+    # @step = @instruction.steps.new(:step_number => params[:step])
+    @step = @instruction.steps.new(step_params)
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to @step, notice: 'Step was successfully created.' }
+        format.html { redirect_to [@instruction, @step], notice: 'Step was successfully created.' }
         format.json { render action: 'show', status: :created, location: @step }
       else
         format.html { render action: 'new' }
@@ -65,11 +72,15 @@ class StepsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step
-      @step = Step.find(params[:id])
+      @step = Step.find(params[:step_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      params.require(:step).permit(:step, :body)
+      params.require(:step).permit(:step_number, :body)
+    end
+
+    def load_instruction
+      @instruction=Instruction.find(params[:instruction_id])
     end
 end
